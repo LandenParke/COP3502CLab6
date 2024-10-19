@@ -24,6 +24,7 @@ while True:
         password_storage = encode(input("Please enter your password: "))
         print("Your password has been encoded and stored!\n")
     elif choice == 2:
+        # TODO: add decoder()
         pass
     elif choice == 3:
         break
