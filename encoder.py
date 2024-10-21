@@ -6,7 +6,7 @@
 
 def encode(password):
     encoded_password = ""
-    for number in password:
+    for number in str(password):
         encoded_password += str(int(number)+3) # Convert to integer for adding 3 then convert back to string to create encoded password
     return encoded_password
 def menu():
@@ -24,13 +24,13 @@ while True:
         while True:
             try:
                 password_input = input("Please enter your password: ")
-                if len(password_input) != 8:
-                    print("Password must be 8 characters long!")
-                else:
-                    password_input = int(password_input)
-                    break
+                password_input = int(password_input) # If input has a letter than except will execute
             except:
                 print("Please enter only numbers for your password.")
+            if len(str(password_input)) != 8: # Makes sure that password is 8 characters long
+                print("Password must be 8 characters long!")
+            elif type(password_input) == int: # If the try: successfully executed than break while loop
+                break
         password_storage = encode(password_input)
         print("Your password has been encoded and stored!\n")
     elif choice == 2:
