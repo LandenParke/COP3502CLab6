@@ -21,7 +21,17 @@ password_storage = "" # Variable for storing encoded passwords
 while True:
     choice = menu()
     if choice == 1:
-        password_storage = encode(input("Please enter your password: "))
+        while True:
+            try:
+                password_input = input("Please enter your password: ")
+                if len(password_input) != 8:
+                    print("Password must be 8 characters long!")
+                else:
+                    password_input = int(password_input)
+                    break
+            except:
+                print("Please enter only numbers for your password.")
+        password_storage = encode(password_input)
         print("Your password has been encoded and stored!\n")
     elif choice == 2:
         # TODO: add decoder()
