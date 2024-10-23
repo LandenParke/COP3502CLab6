@@ -1,5 +1,6 @@
 # Encoder() made by Landen Parke
 # parke.landen@ufl.edu
+# Decoder() made by Dajana Seitllari
 
 
 # Program Functions
@@ -9,6 +10,13 @@ def encode(password):
     for number in str(password):
         encoded_password += str(int(number)+3) # Convert to integer for adding 3 then convert back to string to create encoded password
     return encoded_password
+
+def decode(encoded_password):
+    decoded_password = ""
+    for number in str(encoded_password): #get the stored encoded password and look at each number in the password
+        decoded_password += str(int(number)-3) # Subtract 3 from the number
+    return decoded_password
+
 def menu():
     print("Menu\n-------------\n1. Encode\n2. Decode\n3. Quit\n")
     option = int(input("Please enter an option: "))
@@ -34,7 +42,11 @@ while True:
         password_storage = encode(password_input)
         print("Your password has been encoded and stored!\n")
     elif choice == 2:
-        # TODO: add decoder()
-        pass
+        if password_storage:
+            decoded_password = decode(password_storage)
+            print(f"The encoded password is: {password_storage} , and the original password is {decoded_password}.")
+            print("")
+        else:
+            print("There was no password encoded to decode.") #else if there was nothing to decode
     elif choice == 3:
         break
